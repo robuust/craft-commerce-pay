@@ -1,0 +1,48 @@
+{
+    "name": "robuust/craft-commerce-pay",
+    "description": "PAY integration for Craft Commerce",
+    "version": "1.0.0",
+    "type": "craft-plugin",
+    "keywords": [
+        "pay",
+        "commerce",
+        "craftcms",
+        "omnipay",
+        "yii2"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robuust",
+            "homepage": "https://robuust.digital/"
+        }
+    ],
+    "support": {
+        "email": "support@robuust.digital",
+        "issues": "https://github.com/robuust/craft-commerce-pay/issues?state=open",
+        "source": "https://github.com/robuust/craft-commerce-pay",
+        "docs": "https://github.com/robuust/craft-commerce-pay",
+        "rss": "https://github.com/robuust/craft-commerce-pay/commits/master.atom"
+    },
+    "require": {
+        "craftcms/cms": "^4.0",
+        "craftcms/commerce": "^4.0",
+        "craftcms/commerce-omnipay": "^4.0",
+        "paynl/omnipay-paynl": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "robuust\\pay\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "PAY for Craft Commerce",
+        "handle": "commerce-pay"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    }
+}
