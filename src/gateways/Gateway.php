@@ -3,7 +3,9 @@
 namespace robuust\pay\gateways;
 
 use Craft;
+use craft\commerce\base\RequestResponseInterface;
 use craft\commerce\models\payments\BasePaymentForm;
+use craft\commerce\models\Transaction;
 use craft\commerce\omnipay\base\OffsiteGateway;
 use craft\commerce\Plugin as Commerce;
 use craft\commerce\records\Transaction as TransactionRecord;
@@ -11,6 +13,7 @@ use craft\helpers\App;
 use craft\web\Response as WebResponse;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Paynl\Gateway as OmnipayGateway;
+use yii\base\NotSupportedException;
 
 /**
  * PAY gateway.
@@ -70,6 +73,22 @@ class Gateway extends OffsiteGateway
     public function populateRequest(array &$request, BasePaymentForm $paymentForm = null): void
     {
         parent::populateRequest($request, $paymentForm);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function completePurchase(Transaction $transaction): RequestResponseInterface
+    {
+        if (!$this->supportsCompletePurchase()) {
+            throw new NotSupportedException(Craft::t('commerce', 'Completing purchase is not supported by this gateway'));
+        }
+
+        $request = $this->createRequest($transaction);
+        $request['transactionReference'] = $transaction->reference;
+        $completeRequest = $this->prepareCompletePurchaseRequest($request);
+
+        return $this->performRequest($completeRequest, $transaction);
     }
 
     /**
