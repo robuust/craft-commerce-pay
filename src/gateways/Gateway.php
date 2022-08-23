@@ -72,6 +72,14 @@ class Gateway extends OffsiteGateway
     /**
      * {@inheritdoc}
      */
+    public function supportsWebhooks(): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function rules(): array
     {
         $rules = parent::rules();
