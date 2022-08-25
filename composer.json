@@ -1,6 +1,6 @@
 {
     "name": "robuust/craft-commerce-pay",
-    "description": "PAY integration for Craft Commerce",
+    "description": "PAY integration for Craft Commerce 4.0+",
     "version": "1.0.0",
     "type": "craft-plugin",
     "keywords": [
@@ -25,9 +25,10 @@
         "rss": "https://github.com/robuust/craft-commerce-pay/commits/master.atom"
     },
     "require": {
-        "craftcms/cms": "^4.0",
-        "craftcms/commerce": "^4.0",
-        "craftcms/commerce-omnipay": "^4.0",
+        "php": "^8.0.2",
+        "craftcms/cms": "^4.0.0",
+        "craftcms/commerce": "^4.0.0",
+        "craftcms/commerce-omnipay": "^4.0.0",
         "paynl/omnipay-paynl": "^3.0"
     },
     "autoload": {
@@ -39,10 +40,24 @@
         "name": "PAY for Craft Commerce",
         "handle": "commerce-pay"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "craftcms/phpstan": "dev-main",
+        "craftcms/ecs": "dev-main"
+    },
+    "scripts": {
+        "phpstan": "phpstan --memory-limit=1G",
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix"
+    },
     "config": {
         "allow-plugins": {
             "yiisoft/yii2-composer": true,
             "craftcms/plugin-installer": true
+        },
+        "platform": {
+            "php": "8.0.2"
         }
     }
 }

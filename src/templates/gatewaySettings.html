@@ -1,31 +1,31 @@
 {% from "_includes/forms" import autosuggestField %}
 
 {{ autosuggestField({
-    label: 'API Token'|t('commerce'),
-    id: 'apiToken',
-    class: 'ltr',
-    name: 'apiToken',
-    value: gateway.apiToken,
-    suggestEnvVars: true,
-    errors: gateway.getErrors('apiToken')
+  label: 'API Token'|t('commerce'),
+  id: 'apiToken',
+  class: 'ltr',
+  name: 'apiToken',
+  value: gateway.apiToken,
+  suggestEnvVars: true,
+  errors: gateway.getErrors('apiToken')
 }) }}
 
 {{ autosuggestField({
-    label: "Token Code"|t('commerce'),
-    id: 'tokenCode',
-    class: 'ltr',
-    name: 'tokenCode',
-    value: gateway.tokenCode,
-    suggestEnvVars: true,
-    errors: gateway.getErrors('tokenCode')
+  label: "Token Code"|t('commerce'),
+  id: 'tokenCode',
+  class: 'ltr',
+  name: 'tokenCode',
+  value: gateway.tokenCode,
+  suggestEnvVars: true,
+  errors: gateway.getErrors('tokenCode')
 }) }}
 
 {{ autosuggestField({
-    label: "Service ID"|t('commerce'),
-    id: 'serviceId',
-    class: 'ltr',
-    name: 'serviceId',
-    value: gateway.serviceId,
-    suggestEnvVars: true,
-    errors: gateway.getErrors('serviceId')
+  label: "Service ID"|t('commerce'),
+  id: 'serviceId',
+  class: 'ltr',
+  name: 'serviceId',
+  value: gateway.serviceId,
+  suggestEnvVars: true,
+  errors: gateway.getErrors('serviceId')
 }) }}
