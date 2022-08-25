@@ -158,7 +158,7 @@ class Gateway extends OffsiteGateway
      */
     public static function displayName(): string
     {
-        return Craft::t('commerce', 'PAY');
+        return Craft::t('commerce-pay', 'PAY');
     }
 
     /**
