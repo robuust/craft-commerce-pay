@@ -186,7 +186,7 @@ class Gateway extends OffsiteGateway
         $transaction = Commerce::getInstance()->getTransactions()->getTransactionByHash($transactionHash);
 
         if (!$transaction) {
-            Craft::warning('Transaction with the hash “'.$transactionHash.'“ not found.', 'commerce');
+            Craft::warning('Transaction with the hash “' . $transactionHash . '“ not found.', 'commerce');
             $response->data = 'ok';
 
             return $response;
@@ -200,7 +200,7 @@ class Gateway extends OffsiteGateway
         ])->count();
 
         if ($successfulPurchaseChildTransaction) {
-            Craft::warning('Successful child transaction for “'.$transactionHash.'“ already exists.', 'commerce');
+            Craft::warning('Successful child transaction for “' . $transactionHash . '“ already exists.', 'commerce');
             $response->data = 'ok';
 
             return $response;
@@ -378,6 +378,6 @@ class Gateway extends OffsiteGateway
      */
     protected function getGatewayClassName(): ?string
     {
-        return '\\'.OmnipayGateway::class;
+        return '\\' . OmnipayGateway::class;
     }
 }
