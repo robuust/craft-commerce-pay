@@ -21,7 +21,9 @@ use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Issuer;
 use Omnipay\Common\PaymentMethod;
 use Omnipay\Paynl\Gateway as OmnipayGateway;
+use Omnipay\Paynl\Message\Request\FetchIssuersRequest;
 use Omnipay\Paynl\Message\Request\FetchTransactionRequest;
+use Omnipay\Paynl\Message\Response\FetchIssuersResponse;
 use Omnipay\Paynl\Message\Response\FetchPaymentMethodsResponse;
 use robuust\pay\models\forms\PayOffsitePaymentForm;
 use yii\base\Exception;
@@ -107,7 +109,7 @@ class Gateway extends OffsiteGateway
      */
     public function getServiceId(bool $parse = true): ?string
     {
-        return $parse ? App::parseEnv($this->_serviceId) : $this->serviceId;
+        return $parse ? App::parseEnv($this->_serviceId) : $this->_serviceId;
     }
 
     /**
@@ -345,9 +347,12 @@ class Gateway extends OffsiteGateway
     {
         /** @var OmnipayGateway $gateway */
         $gateway = $this->createGateway();
+        /** @var FetchIssuersRequest $issuersRequest */
         $issuersRequest = $gateway->fetchIssuers($parameters);
+        /** @var FetchIssuersResponse $data */
+        $data = $issuersRequest->sendData($issuersRequest->getData());
 
-        return $issuersRequest->sendData($issuersRequest->getData())->getIssuers();
+        return $data->getIssuers();
     }
 
     /**
