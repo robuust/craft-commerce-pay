@@ -189,7 +189,7 @@ class Gateway extends OffsiteGateway
 
         if (!$transaction) {
             Craft::warning('Transaction with the hash “' . $transactionHash . '“ not found.', 'commerce');
-            $response->data = 'ok';
+            $response->data = 'FALSE|Transaction not found';
 
             return $response;
         }
@@ -203,7 +203,7 @@ class Gateway extends OffsiteGateway
 
         if ($successfulPurchaseChildTransaction) {
             Craft::warning('Successful child transaction for “' . $transactionHash . '“ already exists.', 'commerce');
-            $response->data = 'ok';
+            $response->data = 'TRUE';
 
             return $response;
         }
@@ -216,7 +216,7 @@ class Gateway extends OffsiteGateway
 
         if (!$res->isSuccessful()) {
             Craft::warning('PAY request was unsuccessful.', 'commerce');
-            $response->data = 'ok';
+            $response->data = 'FALSE|Could not fetch transaction';
 
             return $response;
         }
@@ -233,7 +233,7 @@ class Gateway extends OffsiteGateway
         } elseif (isset($res->getData()['status']) && 'failed' === $res->getData()['status']) {
             $childTransaction->status = TransactionRecord::STATUS_FAILED;
         } else {
-            $response->data = 'ok';
+            $response->data = 'TRUE';
 
             return $response;
         }
@@ -244,7 +244,7 @@ class Gateway extends OffsiteGateway
         $childTransaction->message = $res->getMessage();
         Commerce::getInstance()->getTransactions()->saveTransaction($childTransaction);
 
-        $response->data = 'ok';
+        $response->data = 'TRUE';
 
         return $response;
     }
