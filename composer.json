@@ -1,7 +1,7 @@
 {
     "name": "robuust/craft-commerce-pay",
     "description": "PAY integration for Craft Commerce 4.0+",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "type": "craft-plugin",
     "keywords": [
         "pay",
@@ -29,7 +29,7 @@
         "craftcms/cms": "^4.0.0",
         "craftcms/commerce": "^4.0.0",
         "craftcms/commerce-omnipay": "^4.0.0",
-        "paynl/omnipay-paynl": "^3.0"
+        "paynl/omnipay-paynl": "^v3.x-dev"
     },
     "autoload": {
         "psr-4": {
