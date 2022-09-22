@@ -1,4 +1,4 @@
-## 1.1.2 - 21-09-2022
+## 1.1.2 - 22-09-2022
 
 ### Changed
 - Updated Pay Omnipay driver with fixes
