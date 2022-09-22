@@ -250,6 +250,25 @@ class Gateway extends OffsiteGateway
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function purchase(Transaction $transaction, BasePaymentForm $form): RequestResponseInterface
+    {
+        if (!$this->supportsPurchase()) {
+            throw new NotSupportedException(Craft::t('commerce', 'Purchasing is not supported by this gateway'));
+        }
+
+        $request = $this->createRequest($transaction, $form);
+        $commercePay = Craft::$app->getPlugins()->getPluginInfo('commerce-pay');
+        if ($commercePay) {
+            $request['statsData']['object'] = $commercePay['name'];
+        }
+        $purchaseRequest = $this->preparePurchaseRequest($request);
+
+        return $this->performRequest($purchaseRequest, $transaction);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getPaymentTypeOptions(): array
