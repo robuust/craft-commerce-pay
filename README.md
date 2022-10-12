@@ -2,7 +2,7 @@
 
 <h1 align="center">PAY for Craft Commerce</h1>
 
-This plugin provides a [PAY](https://www.pay.nl/) integration for [Craft Commerce](https://craftcms.com/commerce).
+This plugin provides an [official](https://docs.pay.nl/plugins#hostedsolution_craftcommerce) [PAY](https://www.pay.nl/) integration for [Craft Commerce](https://craftcms.com/commerce).
 
 ## Requirements
 
