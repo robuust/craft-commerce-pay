@@ -34,5 +34,6 @@ composer require robuust/craft-commerce-pay
 ## Setup
 
 To add a PAY payment gateway, go to Commerce → Settings → Gateways, create a new gateway, and set the gateway type to “PAY”.
+More info on the API token, Token code and Service ID can be [found here](https://docs.pay.nl/plugins#intro-connection).
 
 > **Tip:** The API token, Token code and Service ID settings can be set to environment variables. See [Environmental Configuration](https://docs.craftcms.com/v3/config/environments.html) in the Craft docs to learn more about that.
