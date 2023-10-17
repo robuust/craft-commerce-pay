@@ -183,6 +183,7 @@ class Gateway extends OffsiteGateway
     public function processWebHook(): Response
     {
         $response = Craft::$app->getResponse();
+        $response->format = Response::FORMAT_RAW;
 
         $transactionHash = $this->getTransactionHashFromWebhook();
         $transaction = Commerce::getInstance()->getTransactions()->getTransactionByHash($transactionHash);

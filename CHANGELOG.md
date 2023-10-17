@@ -1,3 +1,8 @@
+## 1.1.3 - 2023-10-17
+
+### Fixed
+- Always return response as raw data
+
 ## 1.1.2 - 2022-09-22
 
 ### Changed
