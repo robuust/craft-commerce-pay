@@ -1,3 +1,8 @@
+## 1.1.4 - 2023-10-24
+
+### Changed
+- Added settings placeholders
+
 ## 1.1.3 - 2023-10-17
 
 ### Fixed
