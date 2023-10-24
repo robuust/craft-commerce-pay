@@ -17,7 +17,8 @@
   name: 'tokenCode',
   suggestEnvVars: true,
   value: gateway.getTokenCode(false),
-  errors: gateway.getErrors('tokenCode')
+  errors: gateway.getErrors('tokenCode'),
+  placeholder: 'AT-0000-0000'
 }) }}
 
 {{ autosuggestField({
@@ -27,5 +28,6 @@
   name: 'serviceId',
   suggestEnvVars: true,
   value: gateway.getServiceId(false),
-  errors: gateway.getErrors('serviceId')
+  errors: gateway.getErrors('serviceId'),
+  placeholder: 'SL-0000-0000'
 }) }}
