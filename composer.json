@@ -1,7 +1,7 @@
 {
     "name": "robuust/craft-commerce-pay",
     "description": "PAY integration for Craft Commerce 4.0+",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "type": "craft-plugin",
     "keywords": [
         "pay",
@@ -54,7 +54,8 @@
     "config": {
         "allow-plugins": {
             "yiisoft/yii2-composer": true,
-            "craftcms/plugin-installer": true
+            "craftcms/plugin-installer": true,
+            "php-http/discovery": true
         },
         "platform": {
             "php": "8.0.2"

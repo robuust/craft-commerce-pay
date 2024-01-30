@@ -209,7 +209,7 @@ class Gateway extends OffsiteGateway
             return $response;
         }
 
-        $id = Craft::$app->getRequest()->getBodyParam('order_id');
+        $id = Craft::$app->getRequest()->getParam('order_id');
         $gateway = $this->createGateway();
         /** @var FetchTransactionRequest $request */
         $request = $gateway->fetchTransaction(['transactionReference' => $id]);
