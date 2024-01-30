@@ -1,3 +1,8 @@
+## 1.1.5 - 2024-01-30
+
+### Changed
+- Webhook params can be received by both `GET` and `POST` methods
+
 ## 1.1.4 - 2023-10-24
 
 ### Changed
