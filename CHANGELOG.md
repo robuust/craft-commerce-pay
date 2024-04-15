@@ -1,3 +1,9 @@
+## 1.2.0 - 2024-04-15
+
+### Added
+- Support for Craft Commerce v5
+- Updated PAY Omnipay to v5
+
 ## 1.1.5 - 2024-01-30
 
 ### Changed
