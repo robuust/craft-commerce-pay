@@ -18,12 +18,9 @@ use craft\web\Response;
 use craft\web\View;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Exception\InvalidRequestException;
-use Omnipay\Common\Issuer;
 use Omnipay\Common\PaymentMethod;
 use Omnipay\Paynl\Gateway as OmnipayGateway;
-use Omnipay\Paynl\Message\Request\FetchIssuersRequest;
 use Omnipay\Paynl\Message\Request\FetchTransactionRequest;
-use Omnipay\Paynl\Message\Response\FetchIssuersResponse;
 use Omnipay\Paynl\Message\Response\FetchPaymentMethodsResponse;
 use robuust\pay\models\forms\PayOffsitePaymentForm;
 use yii\base\Exception;
@@ -129,10 +126,6 @@ class Gateway extends OffsiteGateway
             /** @var PayOffsitePaymentForm $paymentForm */
             if ($paymentForm->paymentMethod) {
                 $request['paymentMethod'] = $paymentForm->paymentMethod;
-            }
-
-            if ($paymentForm->issuer) {
-                $request['issuer'] = $paymentForm->issuer;
             }
         }
     }
@@ -305,7 +298,6 @@ class Gateway extends OffsiteGateway
                 'gateway' => $this,
                 'paymentForm' => $this->getPaymentFormModel(),
                 'paymentMethods' => $this->fetchPaymentMethods(),
-                'issuers' => $this->fetchIssuers(),
             ];
         } catch (\Throwable $exception) {
             // In case this is not allowed for the account
@@ -354,25 +346,6 @@ class Gateway extends OffsiteGateway
         $response = $paymentMethodsRequest->sendData($paymentMethodsRequest->getData());
 
         return $response->getPaymentMethods();
-    }
-
-    /**
-     * @param array $parameters
-     *
-     * @return Issuer[]
-     *
-     * @throws InvalidRequestException
-     */
-    public function fetchIssuers(array $parameters = [])
-    {
-        /** @var OmnipayGateway $gateway */
-        $gateway = $this->createGateway();
-        /** @var FetchIssuersRequest $issuersRequest */
-        $issuersRequest = $gateway->fetchIssuers($parameters);
-        /** @var FetchIssuersResponse $data */
-        $data = $issuersRequest->sendData($issuersRequest->getData());
-
-        return $data->getIssuers();
     }
 
     /**

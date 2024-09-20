@@ -1,3 +1,8 @@
+## 1.3.0 - 2024-09-20
+
+### Removed
+- Removed support for iDeal issuers to be compatible with iDeal 2.0
+
 ## 1.2.0 - 2024-04-15
 
 ### Added
